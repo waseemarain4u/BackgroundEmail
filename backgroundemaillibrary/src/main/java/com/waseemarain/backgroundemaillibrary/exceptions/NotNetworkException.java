@@ -1,7 +1,7 @@
 package com.waseemarain.backgroundemaillibrary.exceptions;
 
 /**
- * Created by Yesid Lazaro on 11/14/15.
+ * Created by Waseem Arain on 3/20/18.
  */
 public class NotNetworkException extends RuntimeException {
 
