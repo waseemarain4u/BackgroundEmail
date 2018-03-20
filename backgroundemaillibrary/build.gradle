@@ -3,8 +3,8 @@ apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.waseemarain4u'
 
 android {
+    publishNonDefault true
     compileSdkVersion 26
-
 
 
     defaultConfig {
