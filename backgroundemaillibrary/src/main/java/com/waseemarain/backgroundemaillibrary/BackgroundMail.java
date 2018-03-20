@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.mail.Transport;
+import javax.mail.internet.MimeMessage;
+
 
 public class BackgroundMail {
     String TAG = "BackgroundMail";
@@ -316,6 +319,8 @@ public class BackgroundMail {
         protected Boolean doInBackground(String... arg0) {
             try {
                 GmailSender sender = new GmailSender(username, password);
+
+                MimeMessage message=sender.sendMail(subject, body, username, mailto,mailCc,mailBcc, type);
                 if (!attachments.isEmpty()) {
                     for (int i = 0; i < attachments.size(); i++) {
                         if (!attachments.get(i).isEmpty()) {
@@ -323,7 +328,8 @@ public class BackgroundMail {
                         }
                     }
                 }
-                sender.sendMail(subject, body, username, mailto,mailCc,mailBcc, type);
+                Transport.send(message);
+
             } catch (Exception e) {
                 e.printStackTrace();
                 return false;

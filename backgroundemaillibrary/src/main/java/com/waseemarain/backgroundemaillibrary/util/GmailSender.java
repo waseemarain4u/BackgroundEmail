@@ -55,7 +55,7 @@ public class GmailSender extends javax.mail.Authenticator {
         return new PasswordAuthentication(user, password);
     }
 
-    public synchronized void sendMail(String subject, String body, String sender, String recipients,String recipientsCc,String recipientsBcc, String type) throws Exception {
+    public synchronized MimeMessage sendMail(String subject, String body, String sender, String recipients,String recipientsCc,String recipientsBcc, String type) throws Exception {
         MimeMessage message = new MimeMessage(session);
         DataHandler handler = new DataHandler(new ByteArrayDataSource(body.getBytes(), type));
         message.setSender(new InternetAddress(sender));
@@ -79,8 +79,8 @@ public class GmailSender extends javax.mail.Authenticator {
             message.setRecipient(Message.RecipientType.CC, new InternetAddress(recipientsCc));
             message.setRecipient(Message.RecipientType.BCC, new InternetAddress(recipientsBcc));
         }
-        Transport.send(message);
 
+        return message;
     }
 
     public void addAttachment(String filename) throws Exception {

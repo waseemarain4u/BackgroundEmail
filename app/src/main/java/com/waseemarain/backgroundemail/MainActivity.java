@@ -25,12 +25,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void sendTestEmail(){
         BackgroundMail.newBuilder(this)
-                .withUsername("username@gmail.com")
+                .withUsername("user@gmail.com")
                 .withPassword("Password12345")
                 .withMailto("to@gmail.com")
                 .withMailCc("cc@gmail.com")
                 .withMailBcc("bcc@gmail.com")
                 .withSubject("this is the subject")
+                .withAttachments("filePath")
                 .withBody("this is the body")
                 .withOnSuccessCallback(new BackgroundMail.OnSuccessCallback() {
                     @Override
